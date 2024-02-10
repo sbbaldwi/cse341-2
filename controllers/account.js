@@ -37,7 +37,7 @@ const createAccount = async (req, res) => {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        const account = { firstName, lastName, email, favoriteColor, birthday };
+        const account = { firstName, lastName, email, phoneNumber, password };
         const db = getDb();
         const collection = db.collection('Account');
         const result = await collection.insertOne(account);
