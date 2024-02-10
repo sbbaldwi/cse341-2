@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
-const contactsRouter = require('./account');
+const accountRouter = require('./account');
 routes.use('/account', accountRouter);
 
 module.exports = routes;
