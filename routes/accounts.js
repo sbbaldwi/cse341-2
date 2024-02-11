@@ -3,9 +3,9 @@ const router = express.Router();
 
 const accountController = require('../controllers/accounts');
 
-router.get('/', accountController.getAll);
+router.get('/accounts', accountController.getAll);
 router.get('/:id', accountController.getSingle);
-router.post('/', accountController.createAccount);
+router.post('/accounts', accountController.createAccount);
 router.put('/:id', accountController.updateAccount);
 router.delete('/:id', accountController.deleteAccount);
 

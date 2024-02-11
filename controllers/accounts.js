@@ -21,11 +21,13 @@ const getSingle = async (req, res) => {
         if (!account) {
             return res.status(404).json({ message: 'Account not found' });
         }
-        res.status(200).json(contact);
+        res.status(200).json(account); // Corrected from 'contact' to 'account'
     } catch (err) {
-        res.status(500).json({ message: 'Error retrieving account' });
+        console.error('Error in getSingle:', err.message); // It's helpful to log the actual error
+        res.status(500).json({ message: 'Error retrieving account', error: err.message });
     }
 };
+
 
 
 const createAccount = async (req, res) => {
@@ -39,7 +41,7 @@ const createAccount = async (req, res) => {
 
         const account = { firstName, lastName, email, phoneNumber, password };
         const db = getDb();
-        const collection = db.collection('Accounts');
+        const collection = db.collection('Accounts'); // Updated to 'Accounts'
         const result = await collection.insertOne(account);
 
         res.status(201).json({ id: result.insertedId });
@@ -47,6 +49,7 @@ const createAccount = async (req, res) => {
         res.status(500).json({ message: 'Error creating account', error: err.message });
     }
 };
+
 
 const updateAccount = async (req, res) => {
     try {
