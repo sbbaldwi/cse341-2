@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const accountController = require('../controllers/account');
+const accountController = require('../controllers/accounts');
 
 router.get('/', accountController.getAll);
 router.get('/:id', accountController.getSingle);

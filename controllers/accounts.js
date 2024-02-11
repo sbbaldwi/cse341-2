@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
 const getSingle = async (req, res) => {
     try {
         const db = getDb();
-        const collection = db.collection('Account');
+        const collection = db.collection('Accounts');
         const account = await collection.findOne({ _id: new ObjectId(req.params.id) });
         if (!account) {
             return res.status(404).json({ message: 'Account not found' });
@@ -39,7 +39,7 @@ const createAccount = async (req, res) => {
 
         const account = { firstName, lastName, email, phoneNumber, password };
         const db = getDb();
-        const collection = db.collection('Account');
+        const collection = db.collection('Accounts');
         const result = await collection.insertOne(account);
 
         res.status(201).json({ id: result.insertedId });
@@ -79,7 +79,7 @@ const deleteAccount = async (req, res) => {
     try {
         const accountId = req.params.id;
         const db = getDb();
-        const collection = db.collection('Account');
+        const collection = db.collection('Accounts');
 
         const result = await collection.deleteOne({ _id: new ObjectId(accountId) });
 
